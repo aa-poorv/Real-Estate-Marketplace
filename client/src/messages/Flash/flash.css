@@ -1,0 +1,25 @@
+@keyframes fadeOut {
+  0% {
+    top: 0;
+  }
+  100% {
+    top: -200px;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    top: -200px;
+  }
+  100% {
+    top: 0;
+  }
+}
+
+.confirm-appear {
+  animation: fadeIn 0.5s linear;
+}
+
+.confirm-disappear {
+  animation: fadeOut 0.7s linear forwards;
+}

@@ -1,0 +1,14 @@
+.extend li {
+  display: flex;
+}
+
+.extend button {
+  background-color: black;
+  opacity: 80% !important;
+}
+
+@media (min-width: 464px) {
+  .extend li {
+    width: 373px !important;
+  }
+}
