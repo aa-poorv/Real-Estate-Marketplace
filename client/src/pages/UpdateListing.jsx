@@ -32,10 +32,9 @@ const CreateListing = () => {
         queryKey: ["listing", id],
       });
       navigate(`/listing/${data._id}`);
-      dispatch(statusChangeFlash("Success"));
+      dispatch(statusChangeFlash("Success", "Listing"));
     },
     onError: (err) => {
-      console.log(err.info.message);
       if (err.info.message === "jwt expired") {
         logoutMutate();
       } else {

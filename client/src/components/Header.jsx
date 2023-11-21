@@ -1,12 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import { FaSearch } from "react-icons/fa";
+import { IoReorderThreeOutline } from "react-icons/io5";
 import { useSelector } from "react-redux";
 import { Link, NavLink, useNavigate } from "react-router-dom";
+import "./css/header.css";
+import LazyLoading from "./UI/LazyLoading";
 
 function Header() {
   const { currentUser } = useSelector((state) => state.user);
   const [searchTerm, setSearchTerm] = useState("");
+  const [navCollapse, setNavCollapse] = useState(false);
+  const [imageDelay, setImageDelay] = useState(false);
+
   const navigate = useNavigate();
 
   const searchChangeHandler = (event) => {
@@ -29,68 +35,104 @@ function Header() {
 
   return (
     <header className='bg-slate-200 shadow-md'>
-      <div className='flex justify-between items-center max-w-6xl mx-auto p-3'>
-        <Link to='/'>
-          <h1 className='font-bold text-sm sm:text-xl flex flex-wrap'>
-            <span className='text-slate-500'>Raj</span>
-            <span className='text-slate-700'>Estate</span>
-          </h1>
-        </Link>
-
-        <form
-          className='bg-slate-100 p-3 rounded-lg flex items-center'
-          onSubmit={searchSubmitHandler}
+      <div className='flex justify-between'>
+        <div
+          className={`flex flex-col sm:flex-row items-center sm:max-w-6xl sm:mx-auto p-3 sm:flex-1 sm:!h-auto`}
         >
-          <input
-            type='text'
-            placeholder='Search...'
-            value={searchTerm}
-            onChange={searchChangeHandler}
-            className='bg-transparent focus:outline-none w-24 sm:w-64'
-          />
-          <button type='submit'>
-            <FaSearch className='text-slate-600' />
+          <div className='flex-[1.2_4_auto] self-start sm:self-center'>
+            <Link
+              to='/'
+              className='mx-2.5 sm:mx-0 inline'
+            >
+              <span className='font-bold text-base sm:text-xl'>
+                <span className='text-slate-500'>Raj</span>
+                <span className='text-slate-700'>Estate</span>
+              </span>
+            </Link>
+          </div>
+          <div
+            id='moving'
+            className={`${
+              navCollapse ? "nav-open" : ""
+            } sm:flex sm:flex-[1_1_auto]`}
+          >
+            <div
+              className={`flex flex-col-reverse sm:flex-row sm:justify-between items-start sm:items-center inner flex-1`}
+            >
+              <form
+                className='bg-slate-100 p-3 sm:p-3 mx-2.5 h-9 sm:h-auto rounded-lg flex justify-between items-center mb-0.5 sm:mb-0'
+                onSubmit={searchSubmitHandler}
+              >
+                <input
+                  type='text'
+                  placeholder='Search...'
+                  value={searchTerm}
+                  onChange={searchChangeHandler}
+                  className='bg-transparent focus:outline-none w-[20%] flex-1 sm:w-64'
+                />
+                <button type='submit'>
+                  <FaSearch className='text-slate-600' />
+                </button>
+              </form>
+              <ul className='flex flex-col-reverse mx-2.5 sm:mx-0 sm:flex-row pt-0 text-sm sm:text-base my-[9px] sm:my-0 items-center gap-2 sm:gap-4'>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "underline text-gray-800" : undefined
+                  }
+                  to='/'
+                >
+                  <li className='inline text-slate-700 hover:underline'>
+                    Home
+                  </li>
+                </NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "underline text-gray-800" : undefined
+                  }
+                  to='/about'
+                >
+                  <li className='inline text-slate-700 hover:underline'>
+                    About
+                  </li>
+                </NavLink>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive ? "underline text-gray-800" : undefined
+                  }
+                  to='/profile'
+                >
+                  {currentUser ? (
+                    <div className=''>
+                      {imageDelay ? (
+                        <LazyLoading src={currentUser.avatar} />
+                      ) : (
+                        <div className='h-[26px] w-[26px] bg-slate-200'></div>
+                      )}
+                    </div>
+                  ) : (
+                    <li className='inline ml-[2px] text-slate-700 hover:underline'>
+                      Sign in
+                    </li>
+                  )}
+                </NavLink>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div className='sm:hidden mr-2.5 sm:mr-0 self-start pt-[7.2px]'>
+          <button
+            onClick={() => {
+              setNavCollapse((navValue) => !navValue);
+              setTimeout(() => {
+                setImageDelay(true);
+              }, 400);
+            }}
+            className='border border-zinc-300 px-1 rounded-md'
+          >
+            <IoReorderThreeOutline className='!w-[2em] !h-auto' />
           </button>
-        </form>
-        <ul className='flex gap-4'>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "underline text-gray-800" : undefined
-            }
-            to='/'
-          >
-            <li className='hidden sm:inline text-slate-700 hover:underline'>
-              Home
-            </li>
-          </NavLink>
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "underline text-gray-800" : undefined
-            }
-            to='/about'
-          >
-            <li className='hidden sm:inline text-slate-700 hover:underline'>
-              About
-            </li>
-          </NavLink>
-          {/* {userData && <li> {userData.username} </li>} */}
-          <NavLink
-            className={({ isActive }) =>
-              isActive ? "underline text-gray-800" : undefined
-            }
-            to='/profile'
-          >
-            {currentUser ? (
-              <img
-                className='rounded-full h-7 w-7 object-cover'
-                src={currentUser.avatar}
-                alt='profile'
-              />
-            ) : (
-              <li className=' text-slate-700 hover:underline'>Sign in</li>
-            )}
-          </NavLink>
-        </ul>
+        </div>
       </div>
     </header>
   );

@@ -135,7 +135,7 @@ function Profile() {
   const { mutate, isPending } = useMutation({
     mutationFn: updateUser,
     onSuccess: (data) => {
-      dispatch(statusChangeFlash("Success"));
+      dispatch(statusChangeFlash("Success", "User Profile"));
       dispatch(signInSuccess(data));
     },
     onError: (error) => {
@@ -152,7 +152,7 @@ function Profile() {
     onSuccess: () => {
       confirmationClose();
       dispatch(signOutSuccess());
-      dispatch(statusChangeFlash("Delete", "User Deleted"));
+      dispatch(statusChangeFlash("Delete", "User has been Deleted"));
     },
     onError: (error) => {
       if (error.info.message === "jwt expired") {

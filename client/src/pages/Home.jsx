@@ -125,8 +125,8 @@ function Home() {
       {saleListings && (
         <div className='bg-zinc-900'>
           <div className='flex flex-col sm:flex-row max-w-6xl mx-auto text-white justify-between px-3 py-16'>
-            <div className='flex flex-col gap-2 sm:gap-2.5'>
-              <div className='flex gap-2 items-center'>
+            <div className='flex flex-col gap-4 md:gap-3.5'>
+              <div className='flex gap-2.5 items-center flex-wrap'>
                 <a href='https://www.linkedin.com/in/apoorv-pandey-0309b7196/'>
                   <FaLinkedin className='hover:text-green-500 mt-1' />
                 </a>{" "}
@@ -151,17 +151,17 @@ function Home() {
                   <SiLeetcode className='hover:text-green-500 mt-1' />
                 </a>
               </div>
-              <div className='flex gap-1 items-center mb-3 sm:mb-0'>
-                <MdLocationOn className='text-green-600' />{" "}
+              <div className='flex gap-2 items-start md:items-center mb-1 sm:mb-0'>
+                <MdLocationOn className='text-green-600 w-4 md:w-auto mt-[5px] md:mt-0' />{" "}
                 {"Electronic City phase one, Bangalore 560100"}
               </div>
             </div>
             <div>
-              <div className='flex flex-col mt-1 gap-[2px]'>
+              <div className='flex flex-col mt-2 md:mt-1.5 gap-[2px]'>
                 <p> Any feedback / Contact Me </p>
                 <Link
                   to={`mailto:apoorvrpandey@gmail.com?subject=Regarding RajEstate Website`}
-                  className='hover:opacity-80'
+                  className='hover:opacity-80 flex'
                 >
                   <p className='flex gap-1 items-center'>
                     <CiMail className='mt-1' />{" "}

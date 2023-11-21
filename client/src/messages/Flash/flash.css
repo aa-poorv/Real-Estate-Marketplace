@@ -17,9 +17,9 @@
 }
 
 .confirm-appear {
-  animation: fadeIn 0.5s linear;
+  animation: fadeIn 0.7s linear;
 }
 
 .confirm-disappear {
-  animation: fadeOut 0.7s linear forwards;
+  animation: fadeOut 0.9s linear forwards;
 }

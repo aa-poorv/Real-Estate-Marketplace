@@ -11,41 +11,45 @@ const Flash = ({ classes, message, extraMessage }) => {
   if (message === "Listing") {
     content = (
       <div
-        className={`${classes} absolute h-fit p-3 w-60 shadow bg-neutral-400 top-0 left-0 right-0 mx-auto rounded-lg text-center text-white`}
+        className={`${classes} fixed my-auto h-fit py-3 min-[475px]:py-1.5 w-full shadow bg-neutral-400 top-0 px-1 left-0 right-0 mx-auto text-center !leading-2 text-white`}
       >
-        <CheckCircleOutline /> New Listing Created
+        <CheckCircleOutline className='!h-auto !mb-[3.5px]' /> New Listing is
+        Created
       </div>
     );
   } else if (message === "Success") {
     content = (
       <div
-        className={`${classes} fixed h-12 p-3 w-60 shadow bg-green-400 top-0 left-0 right-0 mx-auto rounded-lg text-center text-white`}
+        className={`${classes} fixed my-auto h-fit py-3 min-[475px]:py-1.5 w-full shadow bg-green-400 top-0 px-1 left-0 right-0 mx-auto text-center !leading-2 text-white`}
       >
-        <CheckCircleOutline /> Update Success
+        <CheckCircleOutline className='!h-auto !mb-[3.5px]' /> {extraMessage}{" "}
+        Updated Successfully.
       </div>
     );
   } else if (message === "Error") {
     content = (
       <div
-        className={`${classes} fixed h-fit p-3 w-64 shadow bg-red-400 top-0 left-0 right-0 mx-auto rounded-lg text-center text-white`}
+        className={`${classes} fixed my-auto h-fit py-3 min-[475px]:py-1.5 w-full shadow bg-red-400 top-0 px-1 left-0 right-0 mx-auto text-center !leading-2 text-white`}
       >
-        <ErrorOutlineIcon /> {`Error: ${extraMessage}`}
+        <ErrorOutlineIcon className='!h-auto !mb-[3.5px]' />{" "}
+        {`Error: ${extraMessage}`}
       </div>
     );
   } else if (message === "Delete") {
     content = (
       <div
-        className={`${classes} fixed h-12 p-3 w-60 shadow bg-yellow-400 top-0 left-0 right-0 mx-auto rounded-lg text-center text-white`}
+        className={`${classes} fixed my-auto h-fit py-3 min-[475px]:py-1.5 w-full shadow bg-yellow-400 top-0 px-1 left-0 right-0 mx-auto text-center !leading-2 text-white`}
       >
-        <DeleteOutlineIcon /> {extraMessage}
+        <DeleteOutlineIcon className='!h-auto !mb-[3.5px]' /> {extraMessage}
       </div>
     );
   } else if (message === "Logout") {
     content = (
       <div
-        className={`${classes} fixed h-fit p-3 w-60 shadow bg-teal-400 top-0 left-0 right-0 mx-auto rounded-lg text-center text-white`}
+        className={`${classes} fixed my-auto h-fit py-3 min-[475px]:py-1.5 w-full shadow bg-teal-400 top-0 px-1 left-0 right-0 mx-auto text-center !leading-2 text-white`}
       >
-        <LogoutIcon /> Logout Success. Come back soon!
+        <LogoutIcon className='!h-auto !mb-[3.5px]' /> Logged out successfully.
+        Come back soon!
       </div>
     );
   }
