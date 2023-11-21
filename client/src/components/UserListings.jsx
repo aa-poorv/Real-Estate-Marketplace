@@ -68,17 +68,17 @@ const UserListings = ({ currentUser, openConfirmHandler }) => {
                     src={listing.imageURLs[0]}
                     alt='listing cover photo'
                     className='w-screen rounded-t-lg cursor-pointer hover:scale-105 transition-scale duration-300'
-                    style={{ height: "8.7rem" }}
+                    style={{ height: "8.4rem" }}
                   />
                 </Link>
                 <h5
-                  className='mt-2 mb-0.5 grow text-center p-3 hover:underline cursor-pointer'
+                  className='mt-2 mb-0.5 grow text-center py-3 px-[1.11rem] hover:underline cursor-pointer'
                   onClick={() => navigationHanler({ id: listing._id })}
                 >
                   {listing.title}
                 </h5>
 
-                <div className='flex justify-around mb-6 px-4'>
+                <div className='flex justify-around mb-7 px-4'>
                   <span
                     className='text-red-700 cursor-pointer hover:opacity-90'
                     onClick={() => openConfirmHandler({ id: listing._id })}

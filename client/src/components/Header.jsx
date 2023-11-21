@@ -12,6 +12,9 @@ function Header() {
   const [searchTerm, setSearchTerm] = useState("");
   const [navCollapse, setNavCollapse] = useState(false);
   const [imageDelay, setImageDelay] = useState(false);
+  const [screenSize, setScreenSize] = useState(window.innerWidth);
+
+  window.addEventListener("resize", () => setScreenSize(window.innerWidth));
 
   const navigate = useNavigate();
 
@@ -103,7 +106,7 @@ function Header() {
                 >
                   {currentUser ? (
                     <div className=''>
-                      {imageDelay ? (
+                      {imageDelay || screenSize >= 640 ? (
                         <LazyLoading src={currentUser.avatar} />
                       ) : (
                         <div className='h-[26px] w-[26px] bg-slate-200'></div>

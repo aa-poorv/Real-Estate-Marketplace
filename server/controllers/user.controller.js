@@ -29,9 +29,7 @@ export const updateUser = async (req, res, next) => {
       );
     }
     const { password: _, ...rest } = user._doc;
-    setTimeout(() => {
-      res.status(200).json(rest);
-    }, 3000);
+    res.status(200).json(rest);
   } catch (err) {
     next(err);
   }
@@ -59,7 +57,6 @@ export const userListing = async (req, res, next) => {
   try {
     const id = req.userId;
     const listings = await Listing.find({ userRef: id });
-    console.log(listings);
     res.status(200).json(listings);
   } catch (err) {
     next(err);
