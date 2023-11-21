@@ -153,11 +153,16 @@ const Listing = () => {
               </p>
             )}
           </div>
-          <p className='text-slate-800'>
-            <span className='font-semibold text-black'>Description</span> -{" "}
-            {data.description}
-          </p>
-          <ul className='flex gap-4 sm:gap-6 text-green-900 font-semibold text-sm mt-3 items-center flex-wrap'>
+          <h1
+            className='text-slate-800'
+            style={{ whiteSpace: "pre-wrap", overflowWrap: "break-word" }}
+          >
+            <span className="font-semibold !font-['Arial'] text-black">
+              Description
+            </span>{" "}
+            - {data.description}
+          </h1>
+          <ul className='flex gap-4 sm:gap-6 text-green-900 font-semibold text-sm mt-4 items-center flex-wrap'>
             <li className='flex items-center gap-1 whitespace-nowrap'>
               <FaBed className='text-lg' />
               {data.bedrooms > 1

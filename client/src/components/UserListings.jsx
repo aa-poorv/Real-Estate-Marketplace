@@ -49,7 +49,7 @@ const UserListings = ({ currentUser, openConfirmHandler }) => {
     );
   }
 
-  if (data) {
+  if (data && data.length > 0) {
     content = (
       <>
         <div className='mb-11'>
@@ -71,12 +71,12 @@ const UserListings = ({ currentUser, openConfirmHandler }) => {
                     style={{ height: "8.4rem" }}
                   />
                 </Link>
-                <h5
-                  className='mt-2 mb-0.5 grow text-center py-3 px-[1.11rem] hover:underline cursor-pointer'
+                <p
+                  className='my-4 grow text-center px-[1.11rem] hover:underline cursor-pointer line-clamp-2'
                   onClick={() => navigationHanler({ id: listing._id })}
                 >
                   {listing.title}
-                </h5>
+                </p>
 
                 <div className='flex justify-around mb-7 px-4'>
                   <span
@@ -96,6 +96,12 @@ const UserListings = ({ currentUser, openConfirmHandler }) => {
           </div>
         </div>
       </>
+    );
+  } else if (data && data.length === 0) {
+    content = (
+      <div className='flex justify-center text-lg text-gray-500 font-medium mt-4 mb-5'>
+        <span>You have no Listing!!</span>
+      </div>
     );
   }
 
